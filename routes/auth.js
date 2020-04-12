@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const ctrl = require('./../controllers');
+const ctrl = require('../controllers');
 
-
+// Auth
 router.post('/register', ctrl.auth.register);
 router.post('/login', ctrl.auth.login);
-router.delete('/logout', ctrl.auth.logout);
-router.get('/verify', ctrl.auth.verify)
+// router.delete('/logout', ctrl.auth.logout);
+// router.get('/verify', ctrl.auth.verify)
 
 
 module.exports = router;

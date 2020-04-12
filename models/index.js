@@ -11,7 +11,7 @@ mongoose.connect(DB_URI, {
   .catch((err) => console.log(err));
 
   module.exports = {
-    // Lesson: require('./Lesson'),
-    // Learn: require('./Learn'),
+    Lesson: require('./Lesson'),
+    Learn: require('./Learn'),
     User: require('./User')            
   }
