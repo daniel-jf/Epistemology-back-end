@@ -17,12 +17,11 @@ const db = require('./models');
 const corsOptions = {
   origin: ['http://localhost:3000'],
   methods: "GET,POST,PUT,DELETE",
-  credentials: true, //allows session cookies to be sent back and forth
-  optionsSuccessStatus: 200 //legacy browsers
+  credentials: true, 
+  optionsSuccessStatus: 200 
 }
 
 // middleware
-//CORS- Cross Origin Resource Sharing
 app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());

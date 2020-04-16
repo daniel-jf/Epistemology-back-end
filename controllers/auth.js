@@ -2,8 +2,8 @@ const db = require('../models');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-//check if either username or password is empty
-//check if username already exists
+//check if either email or password is empty
+//check if email already exists
 const register = (req, res) => {
   const newUser = {
       email: req.body.email,
@@ -14,7 +14,7 @@ const register = (req, res) => {
     res.sendStatus(400);
     return;
   }
-//to add the username to db
+//to add the email to db
   db.User.findOne({ email: newUser.email }, (err, foundUser) => {
     if (err) {
       res.status(500).json(err);
@@ -23,7 +23,7 @@ const register = (req, res) => {
       res.status(400).json({ error: 'email already exists' });
       return;
     }
-    //to associate the password, hash it, and add to tb
+    //to associate the password, hash it, and add to db
     bcrypt.genSalt(10, (err, salt) => {
       if (err) return res.status(500).json(err);
       
@@ -76,7 +76,7 @@ const login = (req, res) => {
           },
           process.env.JWT_SECRET,
           {
-            expiresIn: "30 days"
+            expiresIn: "14 days"
           },
         );
         return res.status(200).json({
