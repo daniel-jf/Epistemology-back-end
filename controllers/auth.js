@@ -30,9 +30,10 @@ const register = (req, res) => {
       bcrypt.hash(newUser.password, salt, (err, hashedPwd) => {
         if (err) return res.status(500).json(err);
         newUser.password = hashedPwd;
-  
+
         db.User.create(newUser, (err, savedUser) => {
           if (err) return res.status(500).json(err);
+
           const token = jwt.sign(
             {
               email: savedUser.email,
